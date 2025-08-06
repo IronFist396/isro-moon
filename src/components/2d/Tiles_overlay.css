@@ -1,0 +1,81 @@
+#map {
+  height: 100%;
+  border: 1px solid #888;
+  position: relative;
+}
+
+#mouse-position {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  padding: 5px;
+  background: white;
+  border: 1px solid #888;
+  font-size: 14px;
+}
+
+.ol-control {
+  position: relative;
+}
+.ol-zoom {
+  position: absolute !important;
+  bottom: 10px !important;
+  left: 10px !important;
+  z-index: 5;
+  top:unset;
+}
+
+.ol-control button {
+  height: 40px;
+  width: 30px;
+}
+
+.custom-mouse-position {
+  white-space: nowrap;
+  display: inline-block;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Style for the button */
+.beauty {
+  padding: 10px 20px; /* Add padding for a comfortable click */
+  font-size: 14px; /* Adjust font size */
+  font-weight: bold; /* Make the text bold */
+  background-color: gray; /* Green background */
+  color: white; /* White text */
+  border: none; /* Remove border */
+  border-radius: 25px; /* Rounded corners */
+  cursor: pointer; /* Show pointer on hover */
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+/* Hover effect for the button */
+.beauty:hover {
+  background-color: #45a049; /* Darker green on hover */
+  transform: scale(1.1); /* Slight zoom effect on hover */
+}
+
+/* Focus effect for better accessibility */
+.beauty:focus {
+  outline: none; /* Remove default focus outline */
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.6); /* Blue glow on focus */
+}
+
+/* Button active state */
+.beauty:active {
+  background-color: #388e3c; /* Even darker green when clicked */
+  transform: scale(1); /* Remove zoom effect on click */
+}
+
+/* For small screens */
+@media (max-width: 768px) {
+  .beauty {
+    font-size: 14px; /* Slightly smaller font on smaller screens */
+    padding: 8px 16px; /* Adjust padding */
+  }
+}
+
+
