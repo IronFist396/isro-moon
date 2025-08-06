@@ -32,7 +32,7 @@ const Tiles_Overlay = ({ selectedElement }) => {
   const [sliderValue, setSliderValue] = useState(0.5);
   const [csvData, setCsvData] = useState([]);
   const [closestValue, setClosestValue] = useState("");
-  const [markersVisible, setMarkersVisible] = useState(true); // State to manage marker visibility
+  const [markersVisible, setMarkersVisible] = useState(false); // State to manage marker visibility
   const [markerLayer, setMarkerLayer] = useState(null); // State to store marker layer
 
   if (selectedElement === "Mg#_Si") {
@@ -119,8 +119,14 @@ const Tiles_Overlay = ({ selectedElement }) => {
         className: "custom-mouse-position",
         target: document.getElementById("mouse-position"),
         coordinateFormat: (coord) => {
-          const lat = (coord[1] - 90).toFixed(5);
-          const lon = (coord[0] - 180).toFixed(5);
+          if (!coord) {
+            setCoordinates({ lat: null, lon: null });
+            setClosestValue("");
+            return "";
+          }
+          
+          const lat = (coord[1] - 90).toFixed(3);
+          const lon = (coord[0] - 180).toFixed(3);
           const latMin = -90;
           const latMax = 90;
           const lonMin = -180;
@@ -135,11 +141,11 @@ const Tiles_Overlay = ({ selectedElement }) => {
           ) {
             setCoordinates({ lat, lon });
             setClosestValue(closest);
-            return `Lat: ${lat}, Long: ${lon}, Value: ${closest}`;
+            return `Lat: ${lat}, Long: ${lon}, Value: ${closest ? parseFloat(closest).toFixed(5) : ""}`;
           } else {
-            setCoordinates({ lat, lon });
-            setClosestValue(closest);
-            return `Lat: 0, Long: 0, Value: ${closest}`;
+            setCoordinates({ lat: null, lon: null });
+            setClosestValue("");
+            return "";
           }
         },
       });
@@ -254,7 +260,7 @@ const Tiles_Overlay = ({ selectedElement }) => {
                 new Style({
                   image: new Circle({
                     radius: 8, // Size of the circle
-                    fill: new Fill({ color: "hsla(133, 94%, 52%,40%)" }), // Circle color
+                    fill: new Fill({ color: "hsla(133, 94%, 35%,80%)" }), // Circle color
                   }),
                 })
               );
@@ -265,7 +271,10 @@ const Tiles_Overlay = ({ selectedElement }) => {
 
           // Add to vector source
           const vectorSource = new VectorSource({ features });
-          const vectorLayer = new VectorLayer({ source: vectorSource });
+          const vectorLayer = new VectorLayer({ 
+            source: vectorSource,
+            visible: markersVisible // Set initial visibility based on current state
+          });
           markersRef.current = vectorLayer; // Store the markers in the ref
           setMarkerLayer(vectorLayer); // Store the vectorLayer in state
 
@@ -306,15 +315,15 @@ const Tiles_Overlay = ({ selectedElement }) => {
     };
   }, [selectedElement]);
 
+  // Effect to handle marker visibility changes
+  useEffect(() => {
+    if (markersRef.current) {
+      markersRef.current.setVisible(markersVisible);
+    }
+  }, [markersVisible]);
+
   const toggleMarkersVisibility = () => {
-    setMarkersVisible((prev) => {
-      const newVisibility = !prev;
-      // Directly modify the opacity of the markers layer using the ref
-      if (markersRef.current) {
-        markersRef.current.setVisible(newVisibility); // Toggle visibility
-      }
-      return newVisibility;
-    });
+    setMarkersVisible(prev => !prev);
   };
 
   return (
