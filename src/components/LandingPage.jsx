@@ -1,56 +1,77 @@
 import React from 'react';
 import './LandingPage.css';
 
-const LandingPage = ({ onEnterApp }) => {
-  const teamMembers = [
-    { 
-      name: "Dr. Rajesh Kumar", 
-      role: "Principal Investigator & Project Lead", 
-      initials: "RK",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face&auto=format",
-      expertise: "Planetary Science, Lunar Geology"
-    },
-    { 
-      name: "Dr. Priya Sharma", 
-      role: "Senior Data Scientist", 
-      initials: "PS",
-      image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face&auto=format",
-      expertise: "Machine Learning, Spectral Analysis"
-    },
-    { 
-      name: "Arjun Patel", 
-      role: "3D Visualization Specialist", 
-      initials: "AP",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face&auto=format",
-      expertise: "Computer Graphics, WebGL"
-    },
-    { 
-      name: "Sneha Gupta", 
-      role: "Frontend Developer", 
-      initials: "SG",
-      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face&auto=format",
-      expertise: "React, UI/UX Design"
-    }
-  ];
+// Static data moved outside component for performance
+const teamMembers = [
+  { 
+    name: "Dr. Rajesh Kumar", 
+    role: "Principal Investigator & Project Lead", 
+    initials: "RK",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face&auto=format",
+    expertise: "Planetary Science, Lunar Geology"
+  },
+  { 
+    name: "Dr. Priya Sharma", 
+    role: "Senior Data Scientist", 
+    initials: "PS",
+    image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face&auto=format",
+    expertise: "Machine Learning, Spectral Analysis"
+  },
+  { 
+    name: "Arjun Patel", 
+    role: "3D Visualization Specialist", 
+    initials: "AP",
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face&auto=format",
+    expertise: "Computer Graphics, WebGL"
+  },
+  { 
+    name: "Sneha Gupta", 
+    role: "Frontend Developer", 
+    initials: "SG",
+    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face&auto=format",
+    expertise: "React, UI/UX Design"
+  }
+];
 
-  const researchPapers = [
-    {
-      title: "Advanced Spectroscopic Analysis of Lunar Mare Basalts: Insights from Chandrayaan-3 Data",
-      authors: "Kumar, R., Sharma, P., Desai, A., et al.",
-      journal: "Nature Astronomy",
-      year: "2024",
-      doi: "10.1038/s41550-024-001",
-      abstract: "Comprehensive analysis of lunar surface composition using advanced spectroscopic techniques."
-    },
-    {
-      title: "Real-time 3D Visualization Framework for Planetary Surface Data",
-      authors: "Patel, A., Singh, V., Mehta, R., et al.",
-      journal: "IEEE Transactions on Visualization and Computer Graphics",
-      year: "2024",
-      doi: "10.1109/TVCG.2024.001",
-      abstract: "Novel approaches to interactive 3D rendering of large-scale planetary datasets."
-    }
-  ];
+const researchPapers = [
+  {
+    title: "Advanced Spectroscopic Analysis of Lunar Mare Basalts: Insights from Chandrayaan-3 Data",
+    authors: "Kumar, R., Sharma, P., Desai, A., et al.",
+    journal: "Nature Astronomy",
+    year: "2024",
+    doi: "10.1038/s41550-024-001",
+    abstract: "Comprehensive analysis of lunar surface composition using advanced spectroscopic techniques."
+  },
+  {
+    title: "Real-time 3D Visualization Framework for Planetary Surface Data",
+    authors: "Patel, A., Singh, V., Mehta, R., et al.",
+    journal: "IEEE Transactions on Visualization and Computer Graphics",
+    year: "2024",
+    doi: "10.1109/TVCG.2024.001",
+    abstract: "Novel approaches to interactive 3D rendering of large-scale planetary datasets."
+  }
+];
+
+// Text constants for internationalization
+const texts = {
+  welcome: "Welcome to",
+  moonExplorer: "Moon Explorer",
+  subtitle: "ISRO-IIT Bombay Collaborative Research Initiative",
+  description: "Explore the lunar surface through advanced 2D and 3D visualization tools, powered by Chandrayaan mission data and cutting-edge research analysis. Discover mineral compositions, topographical features, and geological formations of our celestial neighbor.",
+  exploreButton: "Explore Moon Data",
+  interactiveModes: "Interactive Exploration Modes",
+  mapping2D: "2D Mapping",
+  mapping2DDesc: "Explore detailed lunar surface maps with layered data visualization and interactive overlays.",
+  visualization3D: "3D Visualization",
+  visualization3DDesc: "Immerse yourself in three-dimensional lunar terrain with real-time data overlays and navigation.",
+  researchPublications: "Research Publications",
+  ourTeam: "Our Team",
+  publications: "Publications",
+  team: "Team",
+  copyright: "© 2025 IIT Bombay. All rights reserved."
+};
+
+const LandingPage = ({ onEnterApp }) => {
 
   return (
     <div className="landing-page">
@@ -59,17 +80,14 @@ const LandingPage = ({ onEnterApp }) => {
         <div className="hero-content">
           <div className="hero-text">
             <h1 className="hero-title">
-              Welcome to <span className="highlight">Moon Explorer</span>
+              {texts.welcome} <span className="highlight">{texts.moonExplorer}</span>
             </h1>
-            <h2 className="hero-subtitle">ISRO-IIT Bombay Collaborative Research Initiative</h2>
+            <h2 className="hero-subtitle">{texts.subtitle}</h2>
             <p className="hero-description">
-              Explore the lunar surface through advanced 2D and 3D visualization tools, 
-              powered by Chandrayaan mission data and cutting-edge research analysis. 
-              Discover mineral compositions, topographical features, and geological formations 
-              of our celestial neighbor.
+              {texts.description}
             </p>
             <button className="cta-button" onClick={onEnterApp}>
-              <span>Explore Moon Data</span>
+              <span>{texts.exploreButton}</span>
               <svg className="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                 <path d="M5 12h14M12 5l7 7-7 7"/>
               </svg>
@@ -87,7 +105,7 @@ const LandingPage = ({ onEnterApp }) => {
       {/* Interactive Mode Section */}
       <section id="interactive" className="interactive-section">
         <div className="container">
-          <h2 className="section-title">Interactive Exploration Modes</h2>
+          <h2 className="section-title">{texts.interactiveModes}</h2>
           <div className="mode-cards">
             <div className="mode-card">
               <div className="mode-icon">
@@ -97,8 +115,8 @@ const LandingPage = ({ onEnterApp }) => {
                   <path d="M21 15l-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/>
                 </svg>
               </div>
-              <h3>2D Mapping</h3>
-              <p>Explore detailed lunar surface maps with layered data visualization and interactive overlays.</p>
+              <h3>{texts.mapping2D}</h3>
+              <p>{texts.mapping2DDesc}</p>
             </div>
             <div className="mode-card">
               <div className="mode-icon">
@@ -106,8 +124,8 @@ const LandingPage = ({ onEnterApp }) => {
                   <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                 </svg>
               </div>
-              <h3>3D Visualization</h3>
-              <p>Immerse yourself in three-dimensional lunar terrain with real-time data overlays and navigation.</p>
+              <h3>{texts.visualization3D}</h3>
+              <p>{texts.visualization3DDesc}</p>
             </div>
           </div>
         </div>
@@ -116,7 +134,7 @@ const LandingPage = ({ onEnterApp }) => {
       {/* Research Papers Section */}
       <section id="research" className="research-section">
         <div className="container">
-          <h2 className="section-title">Research Publications</h2>
+          <h2 className="section-title">{texts.researchPublications}</h2>
           <div className="papers-grid">
             {researchPapers.map((paper, index) => (
               <div key={index} className="paper-card">
@@ -137,7 +155,7 @@ const LandingPage = ({ onEnterApp }) => {
       {/* Team Section */}
       <section id="team" className="team-section">
         <div className="container">
-          <h2 className="section-title">Our Team</h2>
+          <h2 className="section-title">{texts.ourTeam}</h2>
           
           {/* Team Photo */}
           
@@ -150,7 +168,10 @@ const LandingPage = ({ onEnterApp }) => {
                     alt={member.name}
                     onError={(e) => {
                       e.target.style.display = 'none';
-                      e.target.nextSibling.style.display = 'flex';
+                      const nextElement = e.target.nextSibling;
+                      if (nextElement) {
+                        nextElement.style.display = 'flex';
+                      }
                     }}
                   />
                   <div className="member-initials" style={{display: 'none'}}>
@@ -171,16 +192,16 @@ const LandingPage = ({ onEnterApp }) => {
         <div className="container">
           <div className="footer-content">
             <div className="footer-logo">
-              <h3>Moon Explorer</h3>
-              <p>ISRO-IIT Bombay Collaborative Research Initiative</p>
+              <h3>{texts.moonExplorer}</h3>
+              <p>{texts.subtitle}</p>
             </div>
             <div className="footer-links">
-              <a href="#research">Publications</a>
-              <a href="#team">Team</a>
+              <a href="#research">{texts.publications}</a>
+              <a href="#team">{texts.team}</a>
             </div>
           </div>
           <div className="footer-bottom">
-            <p>&copy; 2025 IIT Bombay. All rights reserved.</p>
+            <p>{texts.copyright}</p>
           </div>
         </div>
       </footer>
