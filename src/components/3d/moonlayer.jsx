@@ -373,7 +373,7 @@ const MoonLayer = React.memo(({ viewMode, selectedElement }) => {
 
   return (
     <div style={{ position: "relative", height: "100vh", width: "100%" }}>
-      <div className="watermark-overlay" />
+      {/* <div className="watermark-overlay" /> */}
       <Canvas
         camera={{
           position: [500, 500, 500],
