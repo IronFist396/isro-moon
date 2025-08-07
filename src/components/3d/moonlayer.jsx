@@ -130,8 +130,8 @@ const RaycasterHandler = ({ setCoordinates }) => {
         const point = intersects[0].point;
         const sphereCoords = new THREE.Spherical();
         sphereCoords.setFromVector3(point);
-        const latitude = (90 - (sphereCoords.phi * 180) / Math.PI).toFixed(2);
-        let longitude = (90 + (sphereCoords.theta * 180) / Math.PI).toFixed(2);
+        const latitude = (90 - (sphereCoords.phi * 180) / Math.PI).toFixed(3);
+        let longitude = (90 + (sphereCoords.theta * 180) / Math.PI).toFixed(3);
 
         if (longitude > 180) longitude -= 360;
         else if (longitude < -180) longitude += 360;
@@ -457,6 +457,28 @@ const MoonLayer = React.memo(({ viewMode, selectedElement }) => {
         <p>Latitude: {coordinates.latitude}°</p>
         <p>Longitude: {coordinates.longitude}°</p>
       </div>
+
+      {/* Selected Element Display */}
+      {selectedElement && selectedElement !== "null" && (
+        <div
+          style={{
+            position: "absolute",
+            top: "50px",
+            left: "50%",
+            transform: "translateX(-50%)",
+            backgroundColor: "rgba(0, 0, 0, 0.7)",
+            color: "white",
+            padding: "15px 25px",
+            borderRadius: "10px",
+            fontSize: "24px",
+            fontWeight: "bold",
+            zIndex: 1000,
+            pointerEvents: "none",
+          }}
+        >
+          {selectedElement}
+        </div>
+      )}
 
       {/* Opacity Control */}
       {textureUrl && (

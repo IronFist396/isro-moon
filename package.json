@@ -23,8 +23,6 @@
     "ol": "^10.6.1",
     "ol-layerswitcher": "^4.1.2",
     "papaparse": "^5.5.3",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1",
     "react-router-dom": "^7.7.1",
     "three": "^0.179.1",
     "tiff": "^7.1.0",
