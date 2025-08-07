@@ -454,8 +454,9 @@ const MoonLayer = React.memo(({ viewMode, selectedElement }) => {
         ) : (
           <p style={{ fontSize: "15px" }}>Value: {value}</p>
         )}
-        <p>Latitude: {coordinates.latitude}°</p>
-        <p>Longitude: {coordinates.longitude}°</p>
+        <p>Latitude: {Math.round(coordinates.latitude * 1000) / 1000}°</p>
+
+        <p>Longitude: {Math.round(coordinates.longitude * 1000) / 1000}°</p>
       </div>
 
       {/* Selected Element Display */}
