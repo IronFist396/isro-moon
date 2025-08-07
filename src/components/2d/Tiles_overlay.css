@@ -79,3 +79,14 @@
 }
 
 
+.chandrayaan-1{
+    position: absolute;
+    bottom: 20px;
+    left: 56.6%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 14px;
+    text-align: center;
+    width: 100%;
+    padding: 10px;
+}

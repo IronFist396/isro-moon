@@ -223,7 +223,6 @@ const MoonLayer = React.memo(({ viewMode, selectedElement }) => {
   const [value, setValue] = useState(null); // State to hold the value for the location
   const [data, setData] = useState([]); // State to hold the dynamic JSON data
   const [nearestLocation, setNearestLocation] = useState(null); // State to hold the nearest location
-
   // Load JSON data dynamically based on selectedElement
   useEffect(() => {
     if (selectedElement === "null") {
@@ -318,7 +317,7 @@ const MoonLayer = React.memo(({ viewMode, selectedElement }) => {
       const distance = R * c; // Distance in km
       return distance;
     };
-
+    
     let closest = {
       name: null,
       value: "No Data",
@@ -374,6 +373,7 @@ const MoonLayer = React.memo(({ viewMode, selectedElement }) => {
 
   return (
     <div style={{ position: "relative", height: "100vh", width: "100%" }}>
+      <div className="watermark-overlay" />
       <Canvas
         camera={{
           position: [500, 500, 500],
@@ -386,7 +386,7 @@ const MoonLayer = React.memo(({ viewMode, selectedElement }) => {
         <ambientLight intensity={1.8} />
         <directionalLight position={[10, 10, 5]} intensity={1} />
         <RaycasterHandler setCoordinates={setCoordinates} />
-
+        
         {/* Render Moon Model with texture */}
         <MoonModel
           scale={[0.5, 0.5, 0.5]}
@@ -394,7 +394,6 @@ const MoonLayer = React.memo(({ viewMode, selectedElement }) => {
           visible={viewMode === "3D"}
           overlayOpacity={overlayOpacity} // Pass dynamic opacity value
         />
-
         <OrbitControls
           enableZoom={true}
           zoomSpeed={2.0}
@@ -431,6 +430,7 @@ const MoonLayer = React.memo(({ viewMode, selectedElement }) => {
         </div>
       )}
 
+      <p className="chandrayaan">⁠Based on data from ISRO’s Chandrayaan-2</p>
       <div
         style={{
           position: "absolute",

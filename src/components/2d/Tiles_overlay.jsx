@@ -378,7 +378,6 @@ const Tiles_Overlay = ({ selectedElement }) => {
         ) : (
           <span></span>
         )}
-
         <div
           style={{
             display: "flex",
@@ -415,6 +414,8 @@ const Tiles_Overlay = ({ selectedElement }) => {
           {markersVisible ? "Hide" : "Show"} Landmarks
         </button>
       </div>
+      <p className="chandrayaan-1">⁠Based on data from ISRO’s Chandrayaan-2</p>
+
     </div>
   );
 };
