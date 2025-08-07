@@ -9,10 +9,40 @@ A React + Vite application for moon visualization and data analysis.
 - **npm**: 9.x or 10.x
 - **Operating System**: Windows, macOS, Linux/Ubuntu
 
+
+## Project Setup
+
+### 1. Clone the Repository
+```bash
+git clone <repository-url>
+cd isro-moon
+```
+
+### 2. Install Dependencies
+```bash
+npm install
+```
+
+### 3. Start Development Server
+```bash
+npm run dev
+```
+
+### 4. Build for Production
+```bash
+npm run build
+```
+
+### 5. Preview Production Build
+```bash
+npm run preview
+```
+
 ## Installation Guide
 
 ### Windows & macOS
 Installation works seamlessly on Windows and macOS with standard Node.js installation.
+
 
 ### Linux/Ubuntu Installation
 
@@ -87,34 +117,6 @@ npm cache clean --force
 # Clear node_modules and reinstall
 rm -rf node_modules package-lock.json
 npm install
-```
-
-## Project Setup
-
-### 1. Clone the Repository
-```bash
-git clone <repository-url>
-cd isro-moon
-```
-
-### 2. Install Dependencies
-```bash
-npm install
-```
-
-### 3. Start Development Server
-```bash
-npm run dev
-```
-
-### 4. Build for Production
-```bash
-npm run build
-```
-
-### 5. Preview Production Build
-```bash
-npm run preview
 ```
 
 ## Troubleshooting
