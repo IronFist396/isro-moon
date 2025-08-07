@@ -431,32 +431,80 @@ const MoonLayer = React.memo(({ viewMode, selectedElement }) => {
       )}
 
       <p className="chandrayaan">⁠Based on data from ISRO’s Chandrayaan-2</p>
+      {/* Top-Left - Nearest Landmark */}
       <div
         style={{
           position: "absolute",
-          bottom: "10px",
-          right: "10px",
-          backgroundColor: "rgba(0, 0, 0, 0.5)",
+          top: "25%",
+          left: "25%",
+          transform: "translate(-50%, -50%)",
+          backgroundColor: "rgba(0, 0, 0, 0.9)",
           color: "white",
-          padding: "10px",
+          padding: "10px 15px",
           borderRadius: "8px",
+          fontSize: "14px",
+          textAlign: "center",
+          whiteSpace: "nowrap",
         }}
       >
-        {nearestLocation === null ? (
-          <p></p>
-        ) : (
-          <p style={{ fontSize: "20px" }}>
-            Nearest Landmark: {nearestLocation}
-          </p>
-        )}
-        {value === null ? (
-          <p></p>
-        ) : (
-          <p style={{ fontSize: "15px" }}>Value: {value}</p>
-        )}
-        <p>Latitude: {Math.round(coordinates.latitude * 1000) / 1000}°</p>
+        {nearestLocation ? `Landmark: ${nearestLocation}` : "No Landmark"}
+      </div>
 
-        <p>Longitude: {Math.round(coordinates.longitude * 1000) / 1000}°</p>
+      {/* Top-Right - Value */}
+      <div
+        style={{
+          position: "absolute",
+          top: "25%",
+          right: "25%",
+          transform: "translate(50%, -50%)",
+          backgroundColor: "rgba(0, 0, 0, 0.9)",
+          color: "white",
+          padding: "10px 15px",
+          borderRadius: "8px",
+          fontSize: "14px",
+          textAlign: "center",
+          whiteSpace: "nowrap",
+        }}
+      >
+        {value !== null ? `Value: ${value}` : "No Data"}
+      </div>
+
+      {/* Bottom-Left - Latitude */}
+      <div
+        style={{
+          position: "absolute",
+          bottom: "25%",
+          left: "25%",
+          transform: "translate(-50%, 50%)",
+          backgroundColor: "rgba(0, 0, 0, 0.9)",
+          color: "white",
+          padding: "10px 15px",
+          borderRadius: "8px",
+          fontSize: "14px",
+          textAlign: "center",
+          whiteSpace: "nowrap",
+        }}
+      >
+        Lat: {Math.round(coordinates.latitude * 1000) / 1000}°
+      </div>
+
+      {/* Bottom-Right - Longitude */}
+      <div
+        style={{
+          position: "absolute",
+          bottom: "25%",
+          right: "25%",
+          transform: "translate(50%, 50%)",
+          backgroundColor: "rgba(0, 0, 0, 0.9)",
+          color: "white",
+          padding: "10px 15px",
+          borderRadius: "8px",
+          fontSize: "14px",
+          textAlign: "center",
+          whiteSpace: "nowrap",
+        }}
+      >
+        Lon: {Math.round(coordinates.longitude * 1000) / 1000}°
       </div>
 
       {/* Selected Element Display */}
